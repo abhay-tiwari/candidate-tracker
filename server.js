@@ -7,6 +7,7 @@ const jsonWebToken = require("jsonwebtoken");
 const cors = require("cors");
 
 const userRoute = require("./routes/userRoutes");
+const submissionRoute = require("./routes/submissionRoutes");
 const databaseConfig = require("./config/databaseConfig");
 
 const port = 5000;
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
+app.use("/api/submissions", submissionRoute);
 
 app.listen(port, () => {
   console.log(`app is running on ${port}`);
