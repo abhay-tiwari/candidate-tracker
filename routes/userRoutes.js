@@ -19,7 +19,7 @@ router.post("/login", (req, res) => {
       } else {
         res.json({
           done: false,
-          message: "login failed, please check your email or password"
+          message: "email or password is incorrect."
         });
       }
     })
@@ -27,7 +27,7 @@ router.post("/login", (req, res) => {
       res.json({
         done: false,
         error: error,
-        message: "something went wrong please check after some time"
+        message: "email or password is incorrect."
       });
     });
 });
