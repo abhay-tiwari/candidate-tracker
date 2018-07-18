@@ -17,14 +17,14 @@ router.post("/login", (req, res) => {
 
         res.json({ done: true, message: "login successful", token: token });
       } else {
-        res.status(401).json({
+        res.json({
           done: false,
           message: "login failed, please check your email or password"
         });
       }
     })
     .catch(error => {
-      res.status(404).json({
+      res.json({
         done: false,
         error: error,
         message: "something went wrong please check after some time"
