@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const jsonWebToken = require("jsonwebtoken");
+const cors = require("cors");
 
 const userRoute = require("./routes/userRoutes");
 const databaseConfig = require("./config/databaseConfig");
@@ -13,6 +14,7 @@ const port = 5000;
 const app = express();
 
 app.use(passport.initialize());
+app.use(cors());
 
 mongoose.connect(
   databaseConfig.url,
