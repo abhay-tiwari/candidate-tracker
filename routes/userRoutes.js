@@ -15,7 +15,12 @@ router.post("/login", (req, res) => {
         let payload = { id: user._id };
         let token = jwt.sign(payload, "test");
 
-        res.json({ done: true, message: "login successful", token: token });
+        res.json({
+          done: true,
+          message: "login successful",
+          token: token,
+          user: user
+        });
       } else {
         res.json({
           done: false,
