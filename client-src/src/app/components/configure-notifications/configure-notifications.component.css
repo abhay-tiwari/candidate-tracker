@@ -1,0 +1,24 @@
+#configureNotification {
+  padding-top: 100px;
+}
+
+h4 {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (min-width: 992px) {
+  .card {
+    padding: 80px 100px;
+  }
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+}
+
+.added{
+  padding: 30px;
+}

@@ -1,3 +1,47 @@
-<p>
-  configure-notifications works!
-</p>
+<div id="configureNotification">
+  <div class="container">
+    <h4>Configure Notification</h4>
+    <div class="card card-body">
+      <div class="alert alert-success" [hidden]="hideDone">{{doneMessage}}</div>
+      <form (submit)="addNotification()">
+        <div class="form-group row">
+          <label for="user" class="col-lg-2 col-form-label">User</label>
+          <div class="col-lg-10">
+            <select name="user" [(ngModel)]="user" class="form-control" id="user">
+              <option value="" disabled>Select User</option>
+              <option *ngFor="let user of users" value="{{user}}">{{user}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="skill" class="col-lg-2 col-form-label">Skill</label>
+          <div class="col-lg-10">
+            <select name="skill" [(ngModel)]="skill" class="form-control" id="skill">
+              <option value="" disabled>Select Skill</option>
+              <option *ngFor="let skill of skills" value="{{skill}}">{{skill}}</option>
+            </select>
+          </div>
+        </div>
+        <input type="submit" value="Configure Notification" class="btn btn-primary">
+      </form>
+    </div>
+
+    <h4 class="added">Add Notifications</h4>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>email</th>
+            <th>skill</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notification of notifications">
+            <td>{{notification.email}}</td>
+            <td>{{notification.skill}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
