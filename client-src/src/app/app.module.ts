@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule, Routes } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -11,6 +13,8 @@ import { NewSubmissionComponent } from "./components/new-submission/new-submissi
 import { ViewSubmissionsComponent } from "./components/view-submissions/view-submissions.component";
 import { ConfigureNotificationsComponent } from "./components/configure-notifications/configure-notifications.component";
 import { ViewNotificationsComponent } from "./components/view-notifications/view-notifications.component";
+
+import { AuthService } from "./services/auth.service";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -38,8 +42,14 @@ const appRoutes: Routes = [
     ConfigureNotificationsComponent,
     ViewNotificationsComponent
   ],
-  imports: [BrowserModule, NgbModule, RouterModule.forRoot(appRoutes)],
-  providers: [],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

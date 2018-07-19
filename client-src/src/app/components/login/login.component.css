@@ -1,0 +1,39 @@
+#login-form {
+  margin-top: 50px;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 50px;
+}
+
+@media (min-width: 992px) {
+  .col-form-label {
+    text-align: center;
+  }
+
+  .submit-button {
+    margin-left: 50px !important;
+    margin-top: 50px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .card {
+    width: 750px;
+    margin: auto;
+  }
+}
+
+form {
+  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.submit-button {
+  margin: 20px;
+}
