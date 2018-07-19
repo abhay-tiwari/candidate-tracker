@@ -1,3 +1,30 @@
-<p>
-  view-submissions works!
-</p>
+<div id="viewSubmissions">
+  <div class="container">
+    <h4>All Candidates</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Experience</th>
+            <th>Preferred Location</th>
+            <th>Expected Joining</th>
+            <th>Skills</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let candidate of candidates">
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.experience}}</td>
+            <td>{{candidate.location}}</td>
+            <td>{{candidate.expectedJoining | date: 'dd/MM/yyyy'}}</td>
+            <td>{{candidate.skills}}</td>
+            <td>{{candidate.gender}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
