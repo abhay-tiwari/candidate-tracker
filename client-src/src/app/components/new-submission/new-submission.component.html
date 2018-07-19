@@ -1,3 +1,61 @@
-<p>
-  new-submission works!
-</p>
+<div id="newSubmission">
+  <div class="container">
+    <h4>Add New Candidate</h4>
+    <div class="card card-body">
+      <div class="alert alert-danger" [hidden]="hideMessage">{{message}}</div>
+      <form (submit)="submitForm()">
+        <div class="form-group row">
+          <label for="name" class="col-lg-3 col-form-label">Candidate Name *</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" name="name" [(ngModel)]="name" id="name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="experience" class="col-lg-3 col-form-label">Experience (In Years) *</label>
+          <div class="col-lg-9">
+            <input type="number" class="form-control" name="experience" [(ngModel)]="experience" id="experience">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="location" class="col-lg-3 col-form-label">Preferred Job Location</label>
+          <div class="col-lg-9">
+            <select name="location" [(ngModel)]="jobLocation" class="form-control" id="location">
+              <option value="" disabled>Select Job Location</option>
+              <option *ngFor="let location of locations" value="{{location}}">{{location}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="joiningDate" class="col-lg-3 col-form-label">Date when candidate can join</label>
+          <div class="col-lg-9">
+            <input type="date" name="joiningDate" [(ngModel)]="expectedJoining" id="joiningDate" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="skills" class="col-lg-3 col-form-label">Skills</label>
+          <div class="col-lg-9">
+            <div *ngFor="let skill of skills; let i = index">
+              <input type="checkbox" (change)="skillChange(i)" [checked]="skill.selected">
+              <span> {{skill.value}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <label for="gender" class="col-lg-3 col-form-label">Gender</label>
+          <div class="col-lg-9">
+            <div *ngFor="let gender of genders; let i = index">
+              <input type="radio" (change)="genderUpdate(i)" name="gender" [checked]="gender.selected">
+              <span> {{gender.value}}</span>
+            </div>
+          </div>
+        </div>
+
+        <input type="button" value="Reset" class="btn btn-secondary reset-btn" (click)="resetForm()">
+        <input type="submit" value="Submit" class="btn btn-primary submit-btn">
+      </form>
+    </div>
+  </div>
+</div>

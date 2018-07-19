@@ -15,6 +15,9 @@ import { ConfigureNotificationsComponent } from "./components/configure-notifica
 import { ViewNotificationsComponent } from "./components/view-notifications/view-notifications.component";
 
 import { AuthService } from "./services/auth.service";
+import { SubmissionService } from "./services/submission.service";
+import { ValidationService } from "./services/validation.service";
+import { NotificationService } from "./services/notification.service";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -49,7 +52,12 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    SubmissionService,
+    ValidationService,
+    NotificationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

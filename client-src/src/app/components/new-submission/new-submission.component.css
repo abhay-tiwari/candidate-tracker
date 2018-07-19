@@ -1,0 +1,35 @@
+.card-body {
+  margin-top: 50px;
+}
+
+form {
+  padding: 30px;
+}
+
+form .col-sm-3 {
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+@media (min-width: 992px) {
+  form label,
+  form select {
+    text-align: center;
+  }
+
+  .reset-btn {
+    margin-left: 200px;
+  }
+}
+
+.submit-btn {
+  margin-left: 10px;
+}
+
+#newSubmission h4 {
+  font-size: 24px;
+  padding-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
