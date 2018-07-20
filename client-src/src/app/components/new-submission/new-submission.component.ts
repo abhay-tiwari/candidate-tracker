@@ -113,6 +113,17 @@ export class NewSubmissionComponent implements OnInit {
         this.message = "Candidate Added Successfully";
         this.hideMessage = false;
         this.resetForm();
+        for (let i = 0; i < candidateInfo.submission.skills.length; i++) {
+          this.submission
+            .setNotification(candidateInfo.submission.skills[i])
+            .subscribe(alert => {
+              if (alert.done == true) {
+                console.log("notification added");
+              } else {
+                console.log("there is an issue in adding alert");
+              }
+            });
+        }
       } else if (candidateInfo.done == false) {
         this.message = "Failed to add the candidate";
       }

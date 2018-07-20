@@ -1,5 +1,5 @@
 export interface candidate {
   done: boolean;
-  submission?: Object;
+  submission?: any;
   error?: string;
 }
