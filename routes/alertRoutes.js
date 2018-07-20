@@ -29,4 +29,15 @@ router.post("/", (req, res) => {
       res.json({ done: true, error: error });
     });
 });
+
+router.put("/:id", (req, res) => {
+  alertModel
+    .findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then(alert => {
+      res.json({ done: true, alert: alert });
+    })
+    .catch(error => {
+      res.json({ done: false, error: error });
+    });
+});
 module.exports = router;
