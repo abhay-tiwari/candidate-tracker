@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NotificationService } from "../../services/notification.service";
+import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-configure-notifications",
@@ -26,9 +28,20 @@ export class ConfigureNotificationsComponent implements OnInit {
 
   notifications = [];
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(
+    private notificationService: NotificationService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.authService.getProfile().subscribe(profile => {
+      if (profile.auth == false) {
+        this.router.navigate(["/"]);
+      } else {
+        console.log("authentication done");
+      }
+    });
     this.getNotifications();
   }
 

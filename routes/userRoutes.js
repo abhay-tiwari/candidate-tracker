@@ -14,11 +14,12 @@ router.post("/login", (req, res) => {
       if (user.password == password) {
         let payload = { id: user._id };
         let token = jwt.sign(payload, "test");
+        let token_test = user._id;
 
         res.json({
           done: true,
           message: "login successful",
-          token: token,
+          token: token_test,
           user: user
         });
       } else {

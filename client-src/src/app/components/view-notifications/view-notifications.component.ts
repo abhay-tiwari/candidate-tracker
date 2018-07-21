@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SubmissionService } from "../../services/submission.service";
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-view-notifications",
@@ -8,9 +10,20 @@ import { SubmissionService } from "../../services/submission.service";
 })
 export class ViewNotificationsComponent implements OnInit {
   notifications = [];
-  constructor(private submission: SubmissionService) {}
+  constructor(
+    private submission: SubmissionService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.authService.getProfile().subscribe(profile => {
+      if (profile.auth == false) {
+        this.router.navigate(["/"]);
+      } else {
+        console.log("authentication done");
+      }
+    });
     this.submission.getNotification().subscribe(alerts => {
       console.log(alerts);
 

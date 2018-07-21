@@ -1,36 +1,39 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a href="#" class="navbar-brand">admin1</a>
+    <a href="#" class="navbar-brand">candidate tracker</a>
     <button class="navbar-toggler hidden-sm-up" (click)="navbarCollapsed = !navbarCollapsed" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">Dashboard</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a routerLink="/view-notifications" class="nav-link" routerLinkActive="active">Notifications</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a routerLink="/configure-notifications" class="nav-link" routerLinkActive="active">Configure Notifications</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a routerLink="/view-submissions" class="nav-link" routerLinkActive="active">Submissions</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a routerLink="/new-submission" class="nav-link" routerLinkActive="active">New Submission</a>
         </li>
 
       </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item" [hidden]="!login">
           <a href="#" class="nav-link" (click)="logoutUser()">Logout</a>
+        </li>
+        <li class="nav-item" [hidden]="login">
+          <a routerLink="/" class="nav-link">Login</a>
         </li>
       </ul>
     </div>

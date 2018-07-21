@@ -1,3 +1,42 @@
-<p>
-  dashboard works!
-</p>
+<div id="dashboard">
+  <div class="container">
+    <h4>what you can do in this app</h4>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-body">
+          <div class="card-heading">configure-notifications</div>
+          <p class="card-text">Here you can add notification
+            <a routerLink="/configure-notifications" class="btn btn-primary">Configure Notification</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-body">
+          <div class="card-heading">View Notification</div>
+          <p class="card-text">Here you can see all notification
+            <a routerLink="/view-notifications" class="btn btn-primary">View Notification</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-body">
+          <div class="card-heading">Submission</div>
+          <p class="card-text">Here You can add new candidate
+            <a routerLink="/new-submission" class="btn btn-primary">New Submission</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-body">
+          <div class="card-heading">Submission</div>
+          <p class="card-text">Here you can see all your submission
+            <a routerLink="/view-submissions" class="btn btn-primary">View Submission</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

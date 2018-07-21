@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { SubmissionService } from "../../services/submission.service";
 import { ValidationService } from "../../services/validation.service";
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-new-submission",
@@ -37,10 +39,19 @@ export class NewSubmissionComponent implements OnInit {
 
   constructor(
     private submission: SubmissionService,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private authService: AuthService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.hideMessage = true;
+    this.authService.getProfile().subscribe(profile => {
+      if (profile.auth == false) {
+        this.router.navigate(["/"]);
+      } else {
+        console.log("authentication done");
+      }
+    });
   }
 
   skillChange(index) {
