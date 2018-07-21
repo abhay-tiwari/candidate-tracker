@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SubmissionService } from "../../services/submission.service";
 import { ValidationService } from "../../services/validation.service";
 import { AuthService } from "../../services/auth.service";
+import { NotificationService } from "../../services/notification.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -41,7 +42,8 @@ export class NewSubmissionComponent implements OnInit {
     private submission: SubmissionService,
     private validationService: ValidationService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {}
   ngOnInit() {
     this.hideMessage = true;
@@ -125,18 +127,36 @@ export class NewSubmissionComponent implements OnInit {
         this.hideMessage = false;
         this.resetForm();
         for (let i = 0; i < candidateInfo.submission.skills.length; i++) {
-          this.submission
-            .setNotification(candidateInfo.submission.skills[i])
-            .subscribe(alert => {
-              if (alert.done == true) {
-                console.log("notification added");
-              } else {
-                console.log("there is an issue in adding alert");
-              }
-            });
+          this.sendNotication(candidateInfo.submission.skills[i]);
+          // this.submission
+          //   .setNotification(candidateInfo.submission.skills[i])
+          //   .subscribe(alert => {
+          //     if (alert.done == true) {
+          //       console.log("notification added");
+          //     } else {
+          //       console.log("there is an issue in adding alert");
+          //     }
+          //   });
         }
       } else if (candidateInfo.done == false) {
         this.message = "Failed to add the candidate";
+      }
+    });
+  }
+
+  sendNotication(skill) {
+    this.notificationService.getUser(skill).subscribe(users => {
+      if (users.done == true) {
+        console.log(users);
+        for (let i = 0; i < users.users.length; i++) {
+          this.submission
+            .setNotification(skill, users.users[i].email)
+            .subscribe(notifications => {
+              console.log(notifications);
+            });
+        }
+      } else {
+        console.log("user done false returned");
       }
     });
   }

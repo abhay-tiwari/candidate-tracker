@@ -8,6 +8,10 @@ const alertSchema = mongoose.Schema({
   unread: {
     type: Boolean,
     required: true
+  },
+  userid: {
+    type: String,
+    required: true
   }
 });
 

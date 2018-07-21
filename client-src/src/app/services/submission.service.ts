@@ -26,16 +26,20 @@ export class SubmissionService {
     return this.httpClient.get<candidates>(this.baseApiURL + "/submissions");
   }
 
-  setNotification(skill): Observable<alert> {
+  setNotification(skill, userid): Observable<alert> {
     let newSkill = {
       skill: skill,
-      unread: true
+      unread: true,
+      userid: userid
     };
     return this.httpClient.post<alert>(this.baseApiURL + "/alerts", newSkill);
   }
 
-  getNotification(): Observable<alerts> {
-    return this.httpClient.get<alerts>(this.baseApiURL + "/alerts");
+  getNotification(userid): Observable<alerts> {
+    let params = { userid: userid };
+    return this.httpClient.get<alerts>(this.baseApiURL + "/alerts", {
+      params: params
+    });
   }
 
   updatNotifications(update): Observable<alert> {

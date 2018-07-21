@@ -24,7 +24,9 @@ export class ViewNotificationsComponent implements OnInit {
         console.log("authentication done");
       }
     });
-    this.submission.getNotification().subscribe(alerts => {
+
+    const useremail = JSON.parse(localStorage.getItem("user")).email;
+    this.submission.getNotification(useremail).subscribe(alerts => {
       console.log(alerts);
 
       if (alerts.done == true) {

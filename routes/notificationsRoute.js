@@ -31,4 +31,16 @@ Router.get("/", (req, res) => {
     });
 });
 
+Router.get("/user", (req, res) => {
+  let skill = req.query.skill;
+  notificationModel
+    .find({ skill: skill })
+    .then(users => {
+      return res.json({ done: true, users: users });
+    })
+    .catch(errors => {
+      return res.json({ done: false, errors: errors });
+    });
+});
+
 module.exports = Router;

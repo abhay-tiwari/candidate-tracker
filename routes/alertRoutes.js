@@ -4,8 +4,9 @@ const router = express.Router();
 const alertModel = require("../models/alertModel");
 
 router.get("/", (req, res) => {
+  let userid = req.query.userid;
   alertModel
-    .find()
+    .find({ userid: userid })
     .then(alerts => {
       res.json({ done: true, alert: alerts });
     })
@@ -17,7 +18,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   let newAlert = new alertModel({
     skill: req.body.skill,
-    unread: req.body.unread
+    unread: req.body.unread,
+    userid: req.body.userid
   });
 
   newAlert
