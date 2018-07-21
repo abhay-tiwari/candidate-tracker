@@ -29,6 +29,9 @@ export class AuthService {
     console.log(this.authToken);
     if (this.authToken == null) {
       this.router.navigate(["/"]);
+      this.login.next({ login: false });
+    } else {
+      this.login.next({ login: true });
     }
     const httpOptions = {
       headers: new HttpHeaders({
