@@ -48,6 +48,7 @@ export class ConfigureNotificationsComponent implements OnInit {
   getNotifications() {
     this.notificationService.getNotification().subscribe(notifications => {
       console.log(notifications);
+      this.notifications = [];
       if (notifications.done == true) {
         for (let i = 0; i < notifications.notifications.length; i++) {
           this.notifications.push({

@@ -25,8 +25,6 @@ export class ViewNotificationsComponent implements OnInit {
       }
     });
 
-    this.notifications = [];
-
     const useremail = JSON.parse(localStorage.getItem("user")).email;
     this.submission.getNotification(useremail).subscribe(alerts => {
       console.log(alerts);
